@@ -1,0 +1,22 @@
+# Normalitzar saltos de línea
+* text=auto
+
+# Archivos binarios
+*.png binary
+*.jpg binary
+*.gif binary
+*.ico binary
+*.svg binary
+*.woff binary
+*.ttf binary
+
+# Archivos Python como texto
+*.py text
+
+# Archivos de configuración y datos como texto
+*.json text
+*.yaml text
+*.yml text
+*.html text
+*.css text
+*.js text
