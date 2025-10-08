@@ -12,24 +12,24 @@ StreamEvents és una plataforma web que permet als usuaris crear i visualitzar e
 
 # 📂 Estructura Simplificada
 
-streamevents/
-├── config/
-├── users/
-│ ├── fixtures/
-│ │ ├── 01_groups.json
-│ │ └── 02_users.json
-│ ├── management/
-│ │ ├── init.py
-│ │ └── commands/
-│ │ ├── init.py
-│ │ └── seed_users.py
-│ ├── models.py
-│ └── admin.py
-├── templates/
-├── media/
-├── static/
-├── venv/
-└── manage.py
+- streamevents/
+- ├── config/
+- ├── users/
+- │ ├── fixtures/
+- │ │ ├── 01_groups.json
+- │ │ └── 02_users.json
+- │ ├── management/
+- │ │ ├── init.py
+- │ │ └── commands/
+- │ │ ├── init.py
+- │ │ └── seed_users.py
+- │ ├── models.py
+- │ └── admin.py
+- ├── templates/
+- ├── media/
+- ├── static/
+- ├── venv/
+- └── manage.py
 
 # ✅ Requisits previs
 
