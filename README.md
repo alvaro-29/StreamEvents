@@ -1,37 +1,37 @@
 # StreamEvents
 
-## ✨ Objectius
+# ✨ Objectius
 StreamEvents és una plataforma web que permet als usuaris crear i visualitzar esdeveniments en directe, similar a Twitch però més simple. Inclou un assistent virtual intel·ligent que ajuda en la moderació i recomanacions.
 
-## 🧱 Stack Principal
+# 🧱 Stack Principal
 - Python 3.11+
 - Django 4.1.13
 - Djongo (MongoDB connector)
 - MongoDB
 - Pillow (per imatges d’avatars)
 
-## 📂 Estructura Simplificada
+# 📂 Estructura Simplificada
 
 streamevents/
 ├── config/
 ├── users/
-│   ├── fixtures/
-│   │   ├── 01_groups.json
-│   │   └── 02_users.json
-│   ├── management/
-│   │   ├── __init__.py
-│   │   └── commands/
-│   │       ├── __init__.py
-│   │       └── seed_users.py
-│   ├── models.py
-│   └── admin.py
+│ ├── fixtures/
+│ │ ├── 01_groups.json
+│ │ └── 02_users.json
+│ ├── management/
+│ │ ├── init.py
+│ │ └── commands/
+│ │ ├── init.py
+│ │ └── seed_users.py
+│ ├── models.py
+│ └── admin.py
 ├── templates/
 ├── media/
 ├── static/
 ├── venv/
 └── manage.py
 
-## ✅ Requisits previs
+# ✅ Requisits previs
 
 - Python 3.11+
 - MongoDB en funcionament
@@ -43,7 +43,7 @@ streamevents/
     pymongo==3.12.3
     Pillow==10.1.0
 
-## 🚀 Instal·lació ràpida
+# 🚀 Instal·lació ràpida
 
 1. **Clonar i preparar entorn**:
 ```bash
@@ -72,7 +72,7 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-## 🔐 Variables d'entorn (env.example)
+# 🔐 Variables d'entorn (env.example)
 
 SECRET_KEY=your_secret_key
 DEBUG=True
@@ -80,11 +80,11 @@ DB_NAME=streamevents
 DB_HOST=localhost
 DB_PORT=27017
 
-## 👤 Superusuari
+# 👤 Superusuari
 
 python manage.py createsuperuser
 
-## 🗃️ Migrar a MongoDB
+# 🗃️ Migrar a MongoDB
 
 DATABASES = {
     "default": {  # MOD
@@ -97,33 +97,33 @@ DATABASES = {
     }  # MOD
 }
 
-## 🛠️ Comandes útils
+# 🛠️ Comandes útils
 
-# Executar servidor
+## Executar servidor
 python manage.py runserver
 
-# Crear nova app
+## Crear nova app
 python manage.py startapp app_name
 
-## 💾 Fixtures (exemple)
+# 💾 Fixtures (exemple)
 
-# Els grups
+## Els grups
 python manage.py loaddata 01_groups.json
 
-# Els usuaris
+## Els usuaris
 python manage.py loaddata 02_users.json
 
 
-## 🌱 Seeds (exemple d'script)
+# 🌱 Seeds (exemple d'script)
 
-# Crear 10 usuaris per defecte
+## Crear 10 usuaris per defecte
 python manage.py seed_users
 
-# Crear 25 usuaris eliminant els existents
+## Crear 25 usuaris eliminant els existents
 python manage.py seed_users --users 25 --clear
 
-# Crear usuaris amb relacions de seguiment
+## Crear usuaris amb relacions de seguiment
 python manage.py seed_users --users 15 --with-follows
 
-# Veure ajuda del command
+## Veure ajuda del command
 python manage.py seed_users --help
