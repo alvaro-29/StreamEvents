@@ -1,0 +1,22 @@
+<!-- Barra de navegació principal de l'aplicació amb Bootstrap -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <!-- Logo / nom de l'aplicació amb enllaç a la pàgina inicial -->
+    <a class="navbar-brand" href="/">StreamEvents</a>
+
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        {# Comprovem si l'usuari està autenticat #}
+        {% if user.is_authenticated %}
+          <!-- Enllaços visibles només per usuaris autenticats -->
+          <li class="nav-item"><a class="nav-link" href="{% url 'users:profile' %}">Perfil</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'users:logout' %}">Tancar sessió</a></li>
+        {% else %}
+          <!-- Enllaços visibles només per usuaris no autenticats -->
+          <li class="nav-item"><a class="nav-link" href="{% url 'users:login' %}">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'users:register' %}">Registre</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

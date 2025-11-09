@@ -1,0 +1,23 @@
+{# Extendim la plantilla base amb l'estructura general de l'aplicació #}
+{% extends 'base.html' %}
+
+{# Definim el títol de la pàgina #}
+{% block title %}Editar Perfil{% endblock %}
+
+{# Contingut principal de la pàgina #}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <!-- Títol del formulari per editar el perfil de l'usuari -->
+        <h2>Editar Perfil</h2>
+
+        <!-- Formulari d'edició amb protecció CSRF i suport per pujar fitxers (avatar) -->
+        <form method="post" enctype="multipart/form-data">{% csrf_token %}
+            {# Mostrem els camps del formulari com paràgrafs amb Bootstrap #}
+            {{ form.as_p }}
+            <!-- Botó per guardar els canvis del perfil -->
+            <button type="submit" class="btn btn-primary">Guardar Canvis</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

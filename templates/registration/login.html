@@ -1,0 +1,23 @@
+{# Extendim la plantilla base amb l'estructura general de l'aplicació #}
+{% extends 'base.html' %}
+
+{# Definim el títol de la pàgina #}
+{% block title %}Login{% endblock %}
+
+{# Contingut principal de la pàgina #}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <!-- Títol de la pàgina de login -->
+        <h2>Login</h2>
+
+        <!-- Formulari de login amb protecció CSRF -->
+        <form method="post">{% csrf_token %}
+            {# Mostrem els camps del formulari com paràgrafs amb Bootstrap #}
+            {{ form.as_p }}
+            <!-- Botó d'enviament -->
+            <button type="submit" class="btn btn-success">Entrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{# Extendim la plantilla base amb l'estructura general de l'aplicació #}
+{% extends 'base.html' %}
+
+{# Definim el títol de la pàgina #}
+{% block title %}Perfil Públic{% endblock %}
+
+{# Contingut principal de la pàgina #}
+{% block content %}
+<div class="card mx-auto" style="max-width: 600px;">
+    <div class="card-body text-center">
+        {# Mostrem l'avatar de l'usuari si existeix #}
+        {% if user.avatar %}
+            <img src="{{ user.avatar.url }}" class="rounded-circle mb-3" width="120">
+        {% else %}
+            {# Icona per defecte si no té avatar #}
+            <i class="fa-solid fa-user fa-5x mb-3"></i>
+        {% endif %}
+
+        {# Mostrem el nom de visualització de l'usuari o el username per defecte #}
+        <h3>{{ user.display_name|default:user.username }}</h3>
+
+        {# Mostrem la bio de l'usuari públic #}
+        <p>{{ user.bio }}</p>
+    </div>
+</div>
+{% endblock %}

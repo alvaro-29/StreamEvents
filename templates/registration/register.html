@@ -1,0 +1,23 @@
+{# Extendim la plantilla base amb l'estructura general de l'aplicació #}
+{% extends 'base.html' %}
+
+{# Definim el títol de la pàgina #}
+{% block title %}Registre{% endblock %}
+
+{# Contingut principal de la pàgina #}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <!-- Títol del formulari de registre -->
+        <h2>Registra't</h2>
+
+        <!-- Formulari de registre amb protecció CSRF -->
+        <form method="post">{% csrf_token %}
+            {# Mostrem els camps del formulari com paràgrafs amb Bootstrap #}
+            {{ form.as_p }}
+            <!-- Botó per enviar el registre -->
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

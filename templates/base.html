@@ -1,20 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ca">
 <head>
-    <meta charset="utf-8">
-    <title>StreamEvents</title>
+    <!-- Codificació de caràcters i responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Títol de la pàgina, permet ser sobreescrit per cada plantilla -->
+    <title>{% block title %}StreamEvents{% endblock %}</title>
+
+    <!-- Bootstrap 5 per estil i disseny responsive -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome per icones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <h1>
-        {% block title %}
-            StreamEvents
-        {% endblock %}
-    </h1>
+    <!-- Barra de navegació inclosa des de includes/navbar.html -->
+    {% include 'includes/navbar.html' %}
 
-    <div>
-        {% block content %}
-            Contingut
-        {% endblock %}
+    <!-- Contenidor principal de la pàgina amb marge superior -->
+    <div class="container mt-4">
+        <!-- Incloem missatges flash (errors, èxits, avisos) -->
+        {% include 'includes/messages.html' %}
+
+        <!-- Bloc de contingut principal que sobreescriuran les plantilles filles -->
+        {% block content %}{% endblock %}
     </div>
+
+    <!-- Peu de pàgina inclòs des de includes/footer.html -->
+    {% include 'includes/footer.html' %}
 </body>
 </html>

@@ -144,3 +144,6 @@ MESSAGE_TAGS = {  # MOD: Adaptació a classes Bootstrap
 # CSRF_COOKIE_SECURE = True  # MOD
 # SESSION_COOKIE_SECURE = True  # MOD
 # SECURE_HSTS_SECONDS = 3600  # MOD
+
+# Emails de Django es mostren a la consola per proves
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"

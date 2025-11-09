@@ -14,11 +14,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+# Importem configuracions, rutes i admin de Django
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.shortcuts import redirect
+from django.urls import include, path
+
+
+# Vista que redirigeix la pàgina principal '/' al login
+def home_view(request):
+    return redirect("users:login")
+
 
 # Llista de rutes principals del projecte
 urlpatterns = [
     # Ruta per accedir al panell d’administració de Django
     path("admin/", admin.site.urls),
+    path("", home_view, name="home"),
+    path("users/", include("users.urls", namespace="users")),
 ]
+
+# En mode desenvolupament, servim els fitxers media (avatars, imatges) des de MEDIA_URL
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

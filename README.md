@@ -127,3 +127,15 @@ python manage.py seed_users --users 15 --with-follows
 
 ## Veure ajuda del command
 python manage.py seed_users --help
+
+
+# Tasca 4: Sistema d'Autenticació i Perfils d'Usuari
+
+- Registre de nous usuaris amb validació de camps i contrasenya segura.
+- Login amb username o email.
+- Perfil propi amb avatar, bio i nom de visualització.
+- Edició de perfil amb pujada d'avatar i widgets personalitzats.
+- Visualització de perfils públics d'altres usuaris.
+- Restabliment de contrasenya amb enllaç enviat per email (en desenvolupament mostra l'email a la consola).
+- Protecció de rutes amb `@login_required`.
+- Missatges d'error i èxit amb Bootstrap alerts.

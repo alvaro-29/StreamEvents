@@ -1,0 +1,12 @@
+{# Comprovem si hi ha missatges flash a mostrar (errors, èxits, avisos) #}
+{% if messages %}
+  {# Recorrem tots els missatges disponibles #}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+      {# Mostrem el text del missatge #}
+      {{ message }}
+      {# Botó per tancar l'alerta #}
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+  {% endfor %}
+{% endif %}
