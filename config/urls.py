@@ -33,6 +33,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home_view, name="home"),
     path("users/", include("users.urls", namespace="users")),
+    path("events/", include("events.urls", namespace="events")),
 ]
 
 # En mode desenvolupament, servim els fitxers media (avatars, imatges) des de MEDIA_URL

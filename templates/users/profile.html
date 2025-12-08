@@ -10,10 +10,10 @@
     <div class="card-body text-center">
         {# Mostrem l'avatar de l'usuari si existeix #}
         {% if user.avatar %}
-            <img src="{{ user.avatar.url }}" class="rounded-circle mb-3" width="120">
+        <img src="{{ user.avatar.url }}" class="rounded-circle mb-3" width="120">
         {% else %}
-            {# Icona per defecte si no té avatar #}
-            <i class="fa-solid fa-user fa-5x mb-3"></i>
+        {# Icona per defecte si no té avatar #}
+        <i class="fa-solid fa-user fa-5x mb-3"></i>
         {% endif %}
 
         {# Mostrem el nom de visualització de l'usuari o el username per defecte #}

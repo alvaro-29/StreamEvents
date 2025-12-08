@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "users",  # MOD: App d'usuari personalitzada
+    "events",  # MOD: Event management app
 ]
 
 MIDDLEWARE = [
