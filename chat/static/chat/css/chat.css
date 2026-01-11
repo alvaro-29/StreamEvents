@@ -1,0 +1,269 @@
+/**
+ * Estils del Sistema de Xat en Directe
+ * Disseny modern amb suport responsive
+ */
+
+/* Contenidor principal del xat */
+.chat-container {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    background-color: #ffffff;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Capçalera del xat */
+.chat-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.chat-header h5 {
+    font-weight: 600;
+    margin: 0;
+}
+
+.chat-header .badge {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    font-size: 0.8rem;
+    padding: 0.4em 0.8em;
+}
+
+/* Àrea de missatges */
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    background-color: #f8f9fa;
+    max-height: 450px;
+}
+
+/* Scrollbar personalitzada */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* Missatges individuals */
+.chat-message {
+    background-color: #ffffff;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    border-left: 3px solid transparent;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease;
+}
+
+.chat-message:hover {
+    transform: translateX(3px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+/* Animació d'entrada */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Missatges destacats */
+.chat-message.highlighted {
+    background-color: #fff3cd;
+    border-left: 3px solid #ffc107;
+}
+
+/* Capçalera del missatge */
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.message-header strong {
+    color: #495057;
+    font-size: 0.9rem;
+}
+
+.message-header small {
+    color: #868e96;
+    font-size: 0.75rem;
+}
+
+/* Contingut del missatge */
+.message-content {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
+    color: #212529;
+    font-size: 0.95rem;
+}
+
+/* Accions del missatge */
+.message-actions {
+    text-align: right;
+    margin-top: 8px;
+}
+
+.message-actions .btn {
+    padding: 0.15rem 0.4rem;
+    font-size: 0.75rem;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+}
+
+.message-actions .btn:hover {
+    opacity: 1;
+}
+
+/* Formulari d'enviament */
+.chat-form {
+    padding: 15px;
+    border-top: 1px solid #dee2e6;
+    display: flex;
+    gap: 10px;
+    background-color: #ffffff;
+    align-items: flex-start;
+}
+
+.chat-form textarea {
+    resize: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    border: 1px solid #dee2e6;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-form textarea:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+.chat-form button {
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chat-form button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Informació del xat */
+.chat-info {
+    border-top: 1px solid #dee2e6;
+    background-color: #f8f9fa;
+    font-size: 0.9rem;
+}
+
+.chat-info a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.chat-info a:hover {
+    text-decoration: underline;
+}
+
+/* Errors del xat */
+#chat-errors .alert {
+    margin-top: -10px;
+    border-radius: 0;
+    border: none;
+    border-top: 1px solid #f5c6cb;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+/* Tablets i pantalles mitjanes */
+@media (max-width: 992px) {
+    .chat-container {
+        height: 400px;
+        margin-top: 20px;
+    }
+
+    .chat-messages {
+        max-height: 280px;
+    }
+}
+
+/* Mòbils */
+@media (max-width: 576px) {
+    .chat-container {
+        height: 350px;
+    }
+
+    .chat-messages {
+        max-height: 220px;
+        padding: 10px;
+    }
+
+    .chat-header {
+        padding: 12px;
+    }
+
+    .chat-form {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .chat-form textarea {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .chat-form button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .chat-message {
+        padding: 10px 12px;
+        margin-bottom: 8px;
+    }
+
+    .message-header strong {
+        font-size: 0.85rem;
+    }
+
+    .message-content {
+        font-size: 0.9rem;
+    }
+}

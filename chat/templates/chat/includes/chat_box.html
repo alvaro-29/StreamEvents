@@ -1,0 +1,50 @@
+<!-- Chat Box Component per a esdeveniments en directe -->
+{% load static %}
+
+<div class="chat-container">
+    <!-- Capçalera del xat -->
+    <div class="chat-header">
+        <h5 class="mb-0">💬 Xat en Directe</h5>
+        <span class="badge bg-secondary" id="message-count">0</span>
+    </div>
+
+    <!-- Àrea de missatges -->
+    <div class="chat-messages" id="chat-messages">
+        <div class="text-center text-muted py-4">
+            <i class="fas fa-spinner fa-spin"></i> Carregant missatges...
+        </div>
+    </div>
+
+    <!-- Formulari d'enviament -->
+    {% if user.is_authenticated and event.status == 'live' %}
+    <form id="chat-form" class="chat-form">
+        {% csrf_token %}
+        <div class="flex-grow-1">
+            {{ chat_form.message }}
+        </div>
+        <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i>
+        </button>
+    </form>
+    <div id="chat-errors" class="px-3 pb-2"></div>
+    {% elif not user.is_authenticated %}
+    <div class="chat-info text-center text-muted p-3">
+        <i class="fas fa-sign-in-alt"></i>
+        <a href="{% url 'users:login' %}">Inicia sessió</a> per participar al xat.
+    </div>
+    {% elif event.status != 'live' %}
+    <div class="chat-info text-center text-muted p-3">
+        <i class="fas fa-clock"></i>
+        El xat només està disponible durant l'esdeveniment en directe.
+    </div>
+    {% endif %}
+</div>
+
+<!-- Passar eventId a JavaScript -->
+<script>
+    const eventId = {{ event.id }};
+</script>
+
+<!-- Incloure CSS i JS del xat -->
+<link rel="stylesheet" href="{% static 'chat/css/chat.css' %}">
+<script src="{% static 'chat/js/chat.js' %}" defer></script>

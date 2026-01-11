@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "users",  # MOD: App d'usuari personalitzada
     "events",  # MOD: Event management app
+    "chat",  # MOD: Sistema de xat en directe
 ]
 
 MIDDLEWARE = [
@@ -121,9 +122,9 @@ MEDIA_ROOT = BASE_DIR / "media"  # MOD: Directori media
 
 AUTH_USER_MODEL = "users.CustomUser"  # MOD: Model d'usuari personalitzat (definir abans primer migrate)
 
-LOGIN_URL = "login"  # MOD: Nom URL login
-LOGIN_REDIRECT_URL = "home"  # MOD: Destí després d'iniciar sessió
-LOGOUT_REDIRECT_URL = "login"  # MOD: Destí després de tancar sessió
+LOGIN_URL = "users:login"  # MOD: Nom URL login
+LOGIN_REDIRECT_URL = "events:event_list"  # MOD: Destí després d'iniciar sessió
+LOGOUT_REDIRECT_URL = "users:login"  # MOD: Destí després de tancar sessió
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
