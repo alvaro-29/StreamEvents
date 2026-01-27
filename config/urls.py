@@ -35,6 +35,7 @@ urlpatterns = [
     path("users/", include("users.urls", namespace="users")),
     path("events/", include("events.urls", namespace="events")),
     path("chat/", include("chat.urls", namespace="chat")),
+    path("", include("semantic_search.urls")),
 ]
 
 # En mode desenvolupament, servim els fitxers media (avatars, imatges) des de MEDIA_URL

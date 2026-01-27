@@ -2,6 +2,8 @@ import datetime
 
 from django.conf import settings
 from django.db import models
+# Django 3.2: JSONField pot ser aquí
+from django.db.models import JSONField
 from django.urls import reverse
 from django.utils import timezone
 
@@ -41,6 +43,15 @@ class Event(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     tags = models.CharField(max_length=500, blank=True)
     stream_url = models.URLField(max_length=500, blank=True)
+
+    # Emmagatzema el vector numèric (embedding) com una llista de floats
+    embedding = models.JSONField(blank=True, null=True)
+
+    # Nom del model d'IA utilitzat (per si canviem de model en el futur)
+    embedding_model = models.CharField(max_length=200, blank=True, null=True)
+
+    # Data de l'última actualització de l'embedding
+    embedding_updated_at = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         ordering = ["-created_at"]

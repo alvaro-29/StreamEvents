@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "users",  # MOD: App d'usuari personalitzada
     "events",  # MOD: Event management app
     "chat",  # MOD: Sistema de xat en directe
+    "semantic_search",
 ]
 
 MIDDLEWARE = [

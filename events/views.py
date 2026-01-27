@@ -44,7 +44,6 @@ def event_list_view(request):
 def event_detail_view(request, pk):
     event = get_object_or_404(Event, pk=pk)
 
-    # Importar formulari de xat
     from chat.forms import ChatMessageForm
 
     context = {
