@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Assistent Virtual - StreamEvents{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-4">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h2 class="h5 mb-0"><i class="fa-solid fa-robot me-2"></i> Assistent d'esdeveniments</h2>
+      </div>
+      <div class="card-body">
+        <div class="mb-3">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="onlyFuture" checked>
+            <label class="form-check-label" for="onlyFuture">Només mostrar esdeveniments futurs</label>
+          </div>
+        </div>
+
+        <div class="input-group mb-3">
+          <input id="msg" type="text" class="form-control" placeholder="Ex: Cerca un concert de jazz per aquest cap de setmana...">
+          <button id="send" class="btn btn-primary">Enviar</button>
+        </div>
+
+        <hr>
+
+        <div id="response-container">
+          <p id="answer" class="lead text-secondary">Escriu alguna cosa per començar a parlar amb l'assistent!</p>
+          <div id="cards" class="row g-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  async function send() {
+    const messageInput = document.getElementById("msg");
+    const message = messageInput.value.trim();
+    if (!message) return;
+
+    const onlyFuture = document.getElementById("onlyFuture").checked;
+    const answerDiv = document.getElementById("answer");
+    const cardsDiv = document.getElementById("cards");
+
+    // Estat de càrrega mentre la IA pensa
+    answerDiv.innerHTML = '<div class="spinner-border spinner-border-sm text-primary" role="status"></div> Pensant...';
+    cardsDiv.innerHTML = "";
+
+    try {
+      const res = await fetch("/assistant/api/chat/", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({message, only_future: onlyFuture})
+      });
+
+      const data = await res.json();
+
+      // Mostrem la resposta de la IA
+      answerDiv.innerText = data.answer || "No he rebut cap resposta.";
+
+      // Renderitzem els esdeveniments en format card
+      if (data.events && data.events.length) {
+        data.events.forEach(ev => {
+          const cardCol = document.createElement("div");
+          cardCol.className = "col-sm-6";
+          cardCol.innerHTML = `
+            <div class="card h-100 border-info">
+              <div class="card-body">
+                <h6 class="card-title">${ev.title}</h6>
+                <p class="small text-muted mb-1">📅 ${new Date(ev.scheduled_date).toLocaleDateString()}</p>
+                <span class="badge bg-secondary mb-2">${ev.category}</span>
+              </div>
+              <div class="card-footer bg-transparent border-0">
+                <a href="${ev.url}" class="btn btn-sm btn-outline-primary w-100">Veure detall</a>
+              </div>
+            </div>
+          `;
+          cardsDiv.appendChild(cardCol);
+        });
+      }
+
+      // Si hi ha una pregunta de seguiment, la mostrem
+      if (data.follow_up) {
+        const p = document.createElement("p");
+        p.className = "mt-3 fst-italic text-primary";
+        p.innerText = "💡 " + data.follow_up;
+        answerDiv.appendChild(p);
+      }
+
+    } catch (error) {
+      answerDiv.innerText = "Error de connexió amb l'assistent.";
+    }
+  }
+
+  // Escoltem el clic del botó i la tecla Enter
+  document.getElementById("send").addEventListener("click", send);
+  document.getElementById("msg").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") send();
+  });
+</script>
+{% endblock %}

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "events",  # MOD: Event management app
     "chat",  # MOD: Sistema de xat en directe
     "semantic_search",
+    "assistant_chat",
 ]
 
 MIDDLEWARE = [
